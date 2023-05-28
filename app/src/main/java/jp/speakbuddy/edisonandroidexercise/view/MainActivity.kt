@@ -12,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import jp.speakbuddy.edisonandroidexercise.ui.fact.FactScreen
 import jp.speakbuddy.edisonandroidexercise.viewmodel.FactViewModel
 import jp.speakbuddy.edisonandroidexercise.ui.theme.EdisonAndroidExerciseTheme
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

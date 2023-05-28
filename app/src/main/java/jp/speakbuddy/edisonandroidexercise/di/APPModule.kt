@@ -1,17 +1,13 @@
 package jp.speakbuddy.edisonandroidexercise.di
 
 
-import androidx.activity.ComponentActivity
-import androidx.lifecycle.ViewModelProvider
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import jp.speakbuddy.edisonandroidexercise.network.FactAPIService
+import jp.speakbuddy.edisonandroidexercise.repository.network.FactAPIService
 import jp.speakbuddy.edisonandroidexercise.repository.APIRepository
-import jp.speakbuddy.edisonandroidexercise.view.MainActivity
-import jp.speakbuddy.edisonandroidexercise.viewmodel.FactViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.serialization.json.Json

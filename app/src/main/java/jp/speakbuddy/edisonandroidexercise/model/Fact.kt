@@ -1,3 +1,9 @@
 package jp.speakbuddy.edisonandroidexercise.model
 
-data class Fact(val fact: String, val length: Int)
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Fact(
+    val fact: String,
+    val length: Int
+)
