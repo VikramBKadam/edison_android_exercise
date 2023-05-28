@@ -1,10 +1,7 @@
 package jp.speakbuddy.edisonandroidexercise.ui.fact
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -48,10 +45,31 @@ fun FactScreen(
             style = MaterialTheme.typography.titleLarge
         )
 
+        if (factState.value.fact.contains("cat", ignoreCase = true)) {
+            Text(
+                text = "Multiple cats!",
+                style = MaterialTheme.typography.titleMedium,
+            )
+        }
+
         Text(
             text = factState.value.fact,
             style = MaterialTheme.typography.bodyLarge
         )
+
+        if (factState.value.length >= 100) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(end = 16.dp)
+            ) {
+                Text(
+                    text = "Length: " + factState.value.length,
+                    modifier = Modifier
+                        .align(Alignment.CenterEnd)
+                )
+            }
+        }
 
         val onClick: () -> Unit = {
             coroutineScope.launch {
