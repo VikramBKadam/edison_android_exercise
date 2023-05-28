@@ -100,6 +100,11 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.3.3")
     debugImplementation("androidx.compose.ui:ui-tooling:1.3.3")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.3")
+
+    // ViewModel and Lifecycle
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    annotationProcessor ("androidx.lifecycle:lifecycle-compiler:2.6.1")
 }
 
 kapt {
