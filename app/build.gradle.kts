@@ -33,7 +33,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -102,9 +105,16 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.3")
 
     // ViewModel and Lifecycle
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    annotationProcessor ("androidx.lifecycle:lifecycle-compiler:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    annotationProcessor("androidx.lifecycle:lifecycle-compiler:2.6.1")
+
+
+    // DataStore
+    implementation("androidx.datastore:datastore-preferences:1.1.0-alpha04")
+
+    //Gson
+    implementation("com.google.code.gson:gson:2.9.1")
 }
 
 kapt {

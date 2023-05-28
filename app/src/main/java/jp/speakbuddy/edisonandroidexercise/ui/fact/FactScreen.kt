@@ -47,7 +47,8 @@ fun FactScreen(
         )
 
         val onClick = {
-            fact = viewModel.updateFact { print("done") }
+            viewModel.updateFact { print("done") }
+            fact = viewModel.getFactFromLocal()
         }
 
         Button(onClick = onClick) {
