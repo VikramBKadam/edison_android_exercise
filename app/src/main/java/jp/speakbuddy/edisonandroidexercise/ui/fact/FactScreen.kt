@@ -18,13 +18,7 @@ fun FactScreen(
     viewModel: FactViewModel
 ) {
 
-    val factState = remember { mutableStateOf(Fact("", 0)) }
-
-    LaunchedEffect(Unit) {
-        viewModel.factState.collect { fact ->
-            factState.value = fact ?: Fact("", 0)
-        }
-    }
+    val factState by viewModel.factState.collectAsState(initial = Fact("", 0))
 
     val coroutineScope = rememberCoroutineScope()
 
@@ -45,7 +39,7 @@ fun FactScreen(
             style = MaterialTheme.typography.titleLarge
         )
 
-        if (factState.value.fact.contains("cat", ignoreCase = true)) {
+        if (factState!!.fact.contains("cat", ignoreCase = true)) {
             Text(
                 text = "Multiple cats!",
                 style = MaterialTheme.typography.titleMedium,
@@ -53,18 +47,18 @@ fun FactScreen(
         }
 
         Text(
-            text = factState.value.fact,
+            text = factState!!.fact,
             style = MaterialTheme.typography.bodyLarge
         )
 
-        if (factState.value.length >= 100) {
+        if (factState!!.length >= 100) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(end = 16.dp)
             ) {
                 Text(
-                    text = "Length: " + factState.value.length,
+                    text = "Length: " + factState!!.length,
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
                 )
