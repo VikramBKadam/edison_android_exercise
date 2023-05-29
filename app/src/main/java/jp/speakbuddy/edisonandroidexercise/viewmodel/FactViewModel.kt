@@ -1,6 +1,5 @@
 package jp.speakbuddy.edisonandroidexercise.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.speakbuddy.edisonandroidexercise.di.DefaultDispatcher
@@ -20,7 +19,6 @@ class FactViewModel @Inject constructor(
     @DefaultDispatcher private val defaultDispatcher: CoroutineDispatcher,
     @IODispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
-    private val TAG = FactViewModel::class.java.simpleName
     private val _factState: MutableStateFlow<Fact?> = MutableStateFlow(Fact("", 0))
     val factState: StateFlow<Fact?> = _factState
 
@@ -43,14 +41,12 @@ class FactViewModel @Inject constructor(
     suspend fun getFactFromLocal() {
         withContext(ioDispatcher) {
             val fact = apiRepository.getFactFromLocal()
-            Log.d(TAG, "getFactFromLocal fact is  $fact")
             _factState.value = fact
         }
     }
 
     private suspend fun saveFactInLocal(fact: Fact) {
         withContext(ioDispatcher) {
-            Log.d(TAG, "saveFactInLocal fact is  $fact")
             apiRepository.saveFact(fact)
         }
     }

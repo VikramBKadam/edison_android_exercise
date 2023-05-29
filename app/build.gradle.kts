@@ -115,6 +115,13 @@ dependencies {
 
     //Gson
     implementation("com.google.code.gson:gson:2.9.1")
+
+    //UT
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testImplementation ("org.mockito:mockito-core:3.12.4")
+    testImplementation ("org.mockito.kotlin:mockito-kotlin:3.2.0")
+    testImplementation ("org.mockito:mockito-inline:3.12.4")
+
 }
 
 kapt {
