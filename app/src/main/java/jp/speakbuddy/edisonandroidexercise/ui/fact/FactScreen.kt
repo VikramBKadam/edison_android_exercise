@@ -11,8 +11,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import jp.speakbuddy.edisonandroidexercise.R
 import jp.speakbuddy.edisonandroidexercise.model.Fact
 import jp.speakbuddy.edisonandroidexercise.ui.theme.EdisonAndroidExerciseTheme
 import jp.speakbuddy.edisonandroidexercise.viewmodel.FactViewModel
@@ -54,13 +56,13 @@ fun FactScreen(
 @Composable
 private fun FactTextView(fact: String) {
     Text(
-        text = "Fact",
+        text = stringResource(id = R.string.fact),
         style = MaterialTheme.typography.titleLarge
     )
 
-    if (fact.contains("cat", ignoreCase = true)) {
+    if (fact.contains(stringResource(id = R.string.cats), ignoreCase = true)) {
         Text(
-            text = "Multiple cats!",
+            text = stringResource(id = R.string.multiple_cats),
             style = MaterialTheme.typography.titleMedium,
         )
     }
@@ -80,7 +82,7 @@ private fun CheckAndAddLengthTextView(factLength: Int) {
                 .padding(end = 16.dp)
         ) {
             Text(
-                text = "Length: $factLength",
+                text = stringResource(id = R.string.length, factLength.toString()),
                 modifier = Modifier
                     .align(Alignment.CenterEnd)
             )
@@ -91,7 +93,7 @@ private fun CheckAndAddLengthTextView(factLength: Int) {
 @Composable
 private fun ButtonView(onClick: () -> Unit) {
     Button(onClick) {
-        Text(text = "Update fact")
+        Text(stringResource(id = R.string.update_fact))
     }
 }
 
