@@ -10,9 +10,11 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import jp.speakbuddy.edisonandroidexercise.repository.network.FactAPIService
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.FACT_DATA_STORE
+import jp.speakbuddy.edisonandroidexercise.BuildConfig
 import jp.speakbuddy.edisonandroidexercise.repository.APIRepository
 import jp.speakbuddy.edisonandroidexercise.repository.localStorage.FactDataStore
+import jp.speakbuddy.edisonandroidexercise.repository.network.FactAPIService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.serialization.json.Json
@@ -23,7 +25,7 @@ import javax.inject.Qualifier
 import javax.inject.Singleton
 
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "fact_data_store")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = FACT_DATA_STORE)
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -53,7 +55,7 @@ class APPModule {
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(client)
-            .baseUrl("https://catfact.ninja/")
+            .baseUrl(BuildConfig.FACT_BASE_URL)
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
     }

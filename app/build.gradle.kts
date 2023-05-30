@@ -28,6 +28,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        buildConfigField("String", "FACT_BASE_URL", "\"https://catfact.ninja/\"")
     }
 
     buildTypes {

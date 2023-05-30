@@ -1,5 +1,7 @@
 package jp.speakbuddy.edisonandroidexercise.viewmodel
 
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TEST_FACT_LENGTH_MORE_THAN_100
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TEST_FACT_WITH_CAT
 import jp.speakbuddy.edisonandroidexercise.model.Fact
 import jp.speakbuddy.edisonandroidexercise.model.FactResponse
 import jp.speakbuddy.edisonandroidexercise.repository.APIRepository
@@ -41,13 +43,13 @@ class FactViewModelTest {
     @org.junit.Test
     fun `updateFact should call save fact of apiRepository is call`() {
         runTest {
-            val tesFact = Fact("Test Fact", 123)
-            val factResponse = FactResponse.Success(tesFact)
+            val testFact = Fact(TEST_FACT_WITH_CAT, TEST_FACT_LENGTH_MORE_THAN_100)
+            val factResponse = FactResponse.Success(testFact)
             whenever(apiRepository.getFact()).thenReturn(
                 factResponse
             )
             factViewModel.updateFact()
-            verify(apiRepository).saveFact(tesFact)
+            verify(apiRepository).saveFact(testFact)
 
         }
     }
@@ -55,7 +57,7 @@ class FactViewModelTest {
     @org.junit.Test
     fun `getFactFromLocal should update factState`() {
         runTest {
-            val testFact = Fact("Test Fact", 123)
+            val testFact = Fact(TEST_FACT_WITH_CAT, TEST_FACT_LENGTH_MORE_THAN_100)
             whenever(apiRepository.getFactFromLocal()).thenReturn(
                 testFact
             )

@@ -5,13 +5,14 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.google.gson.Gson
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.FACT_KEY_STRING
 import jp.speakbuddy.edisonandroidexercise.model.Fact
 import kotlinx.coroutines.flow.first
 
 class FactDataStore(private val dataStore: DataStore<Preferences>) {
 
     companion object {
-        private val FACT_KEY = stringPreferencesKey("fact_key")
+        private val FACT_KEY = stringPreferencesKey(FACT_KEY_STRING)
     }
 
     suspend fun saveFact(fact: Fact) {

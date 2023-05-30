@@ -12,10 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TAG_TEXT_FACTS_APP
 import jp.speakbuddy.edisonandroidexercise.R
 
 @Composable
@@ -37,7 +39,8 @@ fun TopAppBarView(
                 text = stringResource(R.string.fact_app),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = Color.White,
+                modifier = Modifier.testTag(TAG_TEXT_FACTS_APP)
             )
         }
     }

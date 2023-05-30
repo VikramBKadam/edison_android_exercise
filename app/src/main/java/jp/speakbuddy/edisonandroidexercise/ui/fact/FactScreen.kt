@@ -11,9 +11,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TAG_BUTTON_UPDATE_FACT
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TAG_TEXT_FACT
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TAG_TEXT_FACT_TITLE
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TAG_TEXT_LENGTH
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TAG_TEXT_MULTIPLE_CATS
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TAG_TEXT_UPDATE_FACT
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TEST_FACT_LENGTH_MORE_THAN_100
+import jp.speakbuddy.edisonandroidexercise.AppConstants.ConstantStrings.TEST_FACT_WITH_CAT
 import jp.speakbuddy.edisonandroidexercise.R
 import jp.speakbuddy.edisonandroidexercise.model.Fact
 import jp.speakbuddy.edisonandroidexercise.ui.theme.EdisonAndroidExerciseTheme
@@ -57,19 +66,22 @@ fun FactScreen(
 private fun FactTextView(fact: String) {
     Text(
         text = stringResource(id = R.string.fact),
-        style = MaterialTheme.typography.titleLarge
+        style = MaterialTheme.typography.titleLarge,
+        modifier = Modifier.testTag(TAG_TEXT_FACT_TITLE)
     )
 
     if (fact.contains(stringResource(id = R.string.cats), ignoreCase = true)) {
         Text(
             text = stringResource(id = R.string.multiple_cats),
             style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.testTag(TAG_TEXT_MULTIPLE_CATS)
         )
     }
 
     Text(
         text = fact,
-        style = MaterialTheme.typography.bodyLarge
+        style = MaterialTheme.typography.bodyLarge,
+        modifier = Modifier.testTag(TAG_TEXT_FACT)
     )
 }
 
@@ -85,6 +97,7 @@ private fun CheckAndAddLengthTextView(factLength: Int) {
                 text = stringResource(id = R.string.length, factLength.toString()),
                 modifier = Modifier
                     .align(Alignment.CenterEnd)
+                    .testTag(TAG_TEXT_LENGTH)
             )
         }
     }
@@ -92,8 +105,11 @@ private fun CheckAndAddLengthTextView(factLength: Int) {
 
 @Composable
 private fun ButtonView(onClick: () -> Unit) {
-    Button(onClick) {
-        Text(stringResource(id = R.string.update_fact))
+    Button(onClick = onClick, modifier = Modifier.testTag(TAG_BUTTON_UPDATE_FACT)) {
+        Text(
+            stringResource(id = R.string.update_fact),
+            modifier = Modifier.testTag(TAG_TEXT_UPDATE_FACT)
+        )
     }
 }
 
@@ -112,8 +128,8 @@ private fun FactScreenPreview() {
                 alignment = Alignment.CenterVertically
             )
         ) {
-            FactTextView(fact = "I have many cats at my home in India")
-            CheckAndAddLengthTextView(factLength = 101)
+            FactTextView(fact = TEST_FACT_WITH_CAT)
+            CheckAndAddLengthTextView(factLength = TEST_FACT_LENGTH_MORE_THAN_100)
             ButtonView {
 
             }
