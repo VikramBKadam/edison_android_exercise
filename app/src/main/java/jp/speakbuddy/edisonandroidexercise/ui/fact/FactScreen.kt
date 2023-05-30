@@ -63,7 +63,7 @@ fun FactScreen(
 }
 
 @Composable
-private fun FactTextView(fact: String) {
+fun FactTextView(fact: String) {
     Text(
         text = stringResource(id = R.string.fact),
         style = MaterialTheme.typography.titleLarge,
@@ -86,7 +86,7 @@ private fun FactTextView(fact: String) {
 }
 
 @Composable
-private fun CheckAndAddLengthTextView(factLength: Int) {
+ fun CheckAndAddLengthTextView(factLength: Int) {
     if (factLength >= 100) {
         Box(
             modifier = Modifier
@@ -104,7 +104,7 @@ private fun CheckAndAddLengthTextView(factLength: Int) {
 }
 
 @Composable
-private fun ButtonView(onClick: () -> Unit) {
+fun ButtonView(onClick: () -> Unit) {
     Button(onClick = onClick, modifier = Modifier.testTag(TAG_BUTTON_UPDATE_FACT)) {
         Text(
             stringResource(id = R.string.update_fact),
